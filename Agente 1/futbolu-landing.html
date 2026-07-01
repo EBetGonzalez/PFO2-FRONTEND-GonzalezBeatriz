@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUTBOLÚ — Vuelta y Media | Urbana Play 104.3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F8F9FA;
+    --bg-panel:#FFFFFF;
+    --azul:#0053A0;
+    --azul-oscuro:#00305E;
+    --amarillo:#FFC72C;
+    --naranja:#FF6A1A;
+    --tinta:#101828;
+    --gris:#5B6474;
+    --linea:#E3E7ED;
+    --var-verde:#00C46A;
+    --radius:18px;
+    --radius-sm:10px;
+    --shadow:0 10px 30px -12px rgba(0,48,94,0.18);
+    --shadow-soft:0 4px 14px -6px rgba(16,24,40,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--tinta);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    line-height:1.05;
+    margin:0;
+  }
+  .mono{font-family:'Space Mono',monospace;}
+  a{text-decoration:none;color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  section{position:relative;}
+
+  /* ===== SCANLINE / VAR SIGNATURE BACKGROUND TEXTURE ===== */
+  .var-frame{
+    position:relative;
+    border:3px solid var(--azul);
+    border-radius:var(--radius);
+    background:var(--bg-panel);
+    box-shadow:var(--shadow);
+  }
+  .var-frame::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    pointer-events:none;
+    background:
+      linear-gradient(180deg, rgba(0,83,160,0.06) 0%, transparent 6%),
+      repeating-linear-gradient(180deg, rgba(0,83,160,0.035) 0px, rgba(0,83,160,0.035) 1px, transparent 1px, transparent 4px);
+  }
+  .var-tag{
+    position:absolute;
+    top:-14px;
+    left:22px;
+    background:var(--azul);
+    color:#fff;
+    font-family:'Space Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    font-weight:700;
+    padding:5px 12px;
+    border-radius:6px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    z-index:2;
+  }
+  .var-tag::before{
+    content:'';
+    width:7px;height:7px;border-radius:50%;
+    background:var(--var-verde);
+    animation:pulse 1.6s infinite;
+    flex-shrink:0;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1; box-shadow:0 0 0 0 rgba(0,196,106,0.5);}
+    50%{opacity:0.55; box-shadow:0 0 0 5px rgba(0,196,106,0);}
+  }
+  .scan-line{
+    position:absolute;
+    left:0; right:0; height:2px;
+    background:linear-gradient(90deg, transparent, var(--amarillo), transparent);
+    opacity:0.85;
+    animation:scan 3.2s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes scan{
+    0%{top:6%;}
+    50%{top:92%;}
+    100%{top:6%;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .scan-line, .var-tag::before{animation:none;}
+  }
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(248,249,250,0.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--linea);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+  }
+  .logo-block{display:flex; align-items:center; gap:12px;}
+  .logo-text{font-size:22px; font-weight:900; letter-spacing:-0.02em;}
+  .logo-text span{color:var(--azul);}
+  .logo-sub{
+    display:block;
+    font-family:'Space Mono',monospace;
+    font-size:10.5px;
+    color:var(--gris);
+    letter-spacing:0.03em;
+    margin-top:2px;
+  }
+  nav.menu{display:flex; gap:30px;}
+  nav.menu a{
+    font-size:14.5px; font-weight:600; color:var(--tinta);
+    position:relative; padding:4px 0;
+    transition:color .3s;
+  }
+  nav.menu a::after{
+    content:''; position:absolute; left:0; bottom:-2px; width:0; height:2px;
+    background:var(--naranja); transition:width .3s;
+  }
+  nav.menu a:hover{color:var(--azul);}
+  nav.menu a:hover::after{width:100%;}
+  .burger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;}
+  .burger span{width:24px; height:2.5px; background:var(--tinta); border-radius:2px;}
+
+  /* ===== HERO ===== */
+  .hero{padding:72px 0 60px;}
+  .hero-inner{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:48px;
+    align-items:stretch;
+  }
+  .hero-copy{display:flex; flex-direction:column; justify-content:center; gap:22px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Space Mono',monospace; font-size:12.5px; font-weight:700;
+    color:var(--azul); background:rgba(0,83,160,0.08);
+    padding:7px 14px; border-radius:100px; width:fit-content;
+    letter-spacing:0.04em;
+  }
+  .hero h1{font-size:clamp(32px,4.4vw,50px); letter-spacing:-0.02em;}
+  .hero h1 em{
+    font-style:normal; color:var(--azul);
+    background:linear-gradient(180deg, transparent 62%, var(--amarillo) 62%);
+  }
+  .hero p.sub{font-size:17px; line-height:1.6; color:var(--gris); max-width:52ch;}
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    font-family:'Poppins',sans-serif; font-weight:700; font-size:15.5px;
+    padding:16px 28px; border-radius:100px; border:none; cursor:pointer;
+    transition:transform .3s, box-shadow .3s, background .3s;
+  }
+  .btn-cta{
+    background:var(--naranja); color:#fff;
+    box-shadow:0 10px 24px -8px rgba(255,106,26,0.55);
+  }
+  .btn-cta:hover{transform:translateY(-3px); box-shadow:0 16px 30px -8px rgba(255,106,26,0.65);}
+  .btn-outline{
+    background:transparent; color:var(--azul); border:2px solid var(--azul);
+  }
+  .btn-outline:hover{background:var(--azul); color:#fff; transform:translateY(-3px);}
+  .btn-mini{
+    font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px;
+    padding:11px 16px; border-radius:100px; border:1.5px solid var(--azul-oscuro);
+    background:transparent; color:var(--azul-oscuro); width:100%;
+  }
+  .btn-mini:hover{background:var(--azul-oscuro); color:#fff;}
+
+  /* Quiz card in hero */
+  .quiz-card{padding:26px 26px 24px; display:flex; flex-direction:column; gap:16px; justify-content:center;}
+  .quiz-card h3{font-size:17px;}
+  .quiz-card p{font-size:13.5px; color:var(--gris); margin:0;}
+  .quiz-options{display:flex; flex-direction:column; gap:10px;}
+  .quiz-btn{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 16px; border-radius:var(--radius-sm);
+    border:2px solid var(--linea); background:#fff;
+    font-weight:600; font-size:14.5px; cursor:pointer;
+    transition:border-color .3s, background .3s, transform .3s;
+    text-align:left;
+  }
+  .quiz-btn:hover{border-color:var(--azul); transform:translateX(3px);}
+  .quiz-btn.picked{border-color:var(--var-verde); background:rgba(0,196,106,0.08);}
+  .quiz-result{
+    font-family:'Space Mono',monospace; font-size:12.5px;
+    color:var(--azul-oscuro); min-height:16px;
+  }
+
+  /* ===== ABOUT ===== */
+  .about{padding:70px 0; background:var(--azul-oscuro); color:#fff; overflow:hidden; position:relative;}
+  .about::before{
+    content:''; position:absolute; top:-120px; right:-120px; width:340px; height:340px;
+    border-radius:50%; border:2px dashed rgba(255,255,255,0.14);
+  }
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:52px; align-items:start; position:relative; z-index:1;}
+  .about h2{font-size:clamp(26px,3vw,34px); color:#fff; margin-bottom:18px;}
+  .about p{font-size:15.5px; line-height:1.75; color:rgba(255,255,255,0.82); max-width:52ch;}
+  .hosts{font-family:'Space Mono',monospace; font-size:12.5px; color:var(--amarillo); margin-top:14px; letter-spacing:0.03em;}
+  .questions-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px;}
+  .questions-list li{
+    display:flex; align-items:center; gap:12px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:var(--radius-sm);
+    padding:13px 16px; font-size:14.5px; font-weight:500;
+    transition:background .3s, border-color .3s;
+  }
+  .questions-list li:hover{background:rgba(255,199,44,0.1); border-color:var(--amarillo);}
+  .questions-list li::before{
+    content:'?'; font-family:'Space Mono',monospace; font-weight:700; color:var(--amarillo);
+    flex-shrink:0; width:26px; height:26px; border-radius:50%; border:1.5px solid var(--amarillo);
+    display:flex; align-items:center; justify-content:center; font-size:13px;
+  }
+
+  /* ===== SERVICES ===== */
+  .services{padding:80px 0;}
+  .section-head{text-align:center; max-width:600px; margin:0 auto 46px;}
+  .section-head .eyebrow{margin:0 auto 14px;}
+  .section-head h2{font-size:clamp(26px,3.2vw,36px);}
+  .cards-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .card{
+    padding:30px 26px 26px; display:flex; flex-direction:column; gap:16px;
+    transition:transform .35s, box-shadow .35s;
+  }
+  .card:hover{transform:translateY(-6px); box-shadow:0 20px 40px -14px rgba(0,48,94,0.28);}
+  .card-icon{
+    width:52px; height:52px; border-radius:14px; background:var(--azul);
+    display:flex; align-items:center; justify-content:center; font-size:24px;
+  }
+  .card h3{font-size:18.5px; margin-top:2px;}
+  .card p{font-size:14.5px; line-height:1.6; color:var(--gris); flex:1; margin:0;}
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials{padding:80px 0; background:linear-gradient(180deg, var(--bg) 0%, #EFF3F8 100%);}
+  .test-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .test-card{padding:26px 24px 24px; position:relative;}
+  .test-status{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:'Space Mono',monospace; font-size:11px; font-weight:700;
+    color:var(--var-verde); letter-spacing:0.05em; margin-bottom:14px;
+  }
+  .test-status::before{content:'✓'; font-weight:900;}
+  .test-quote{font-size:14px; line-height:1.65; color:var(--tinta); margin:0 0 18px;}
+  .test-foot{
+    display:flex; align-items:center; justify-content:space-between;
+    border-top:1px dashed var(--linea); padding-top:14px;
+    font-family:'Space Mono',monospace; font-size:11.5px; color:var(--gris);
+  }
+  .test-foot b{color:var(--azul-oscuro); font-family:'Poppins',sans-serif; font-size:13px;}
+
+  /* ===== CONTACT FORM ===== */
+  .contact{padding:80px 0;}
+  .form-panel{padding:44px; max-width:640px; margin:0 auto;}
+  .form-panel h2{font-size:clamp(22px,2.8vw,28px); text-align:center; margin-bottom:8px;}
+  .form-panel > p{text-align:center; color:var(--gris); font-size:14.5px; margin:0 0 30px;}
+  .field{margin-bottom:18px; display:flex; flex-direction:column; gap:7px;}
+  .field label{font-size:12.5px; font-weight:700; color:var(--azul-oscuro); font-family:'Space Mono',monospace; letter-spacing:0.03em;}
+  .field input, .field select{
+    padding:14px 16px; border-radius:var(--radius-sm); border:2px solid var(--linea);
+    font-family:'Inter',sans-serif; font-size:14.5px; background:#fff; color:var(--tinta);
+    transition:border-color .3s;
+  }
+  .field input:focus, .field select:focus{outline:none; border-color:var(--azul);}
+  .field input::placeholder{color:#9AA3B2;}
+  .form-panel .btn-cta{width:100%; margin-top:6px; padding:17px;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--azul-oscuro); color:rgba(255,255,255,0.85); padding:36px 0;}
+  .footer-inner{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;}
+  .footer-inner p{font-size:13px; margin:0; max-width:46ch; line-height:1.6;}
+  .socials{display:flex; gap:20px;}
+  .socials a{font-family:'Space Mono',monospace; font-size:12.5px; font-weight:700; color:#fff; transition:color .3s;}
+  .socials a:hover{color:var(--amarillo);}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:900px){
+    .hero-inner{grid-template-columns:1fr; gap:34px;}
+    .about-grid{grid-template-columns:1fr;}
+    .cards-grid{grid-template-columns:1fr 1fr;}
+    .test-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:700px){
+    nav.menu{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; background:var(--bg-panel);
+      padding:20px 24px; border-bottom:1px solid var(--linea);
+      display:none; gap:16px;
+    }
+    nav.menu.open{display:flex;}
+    .burger{display:flex;}
+    .cards-grid{grid-template-columns:1fr;}
+    .form-panel{padding:30px 22px;}
+    .footer-inner{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <div class="logo-block">
+      <div class="logo-text">FUTBOLÚ <span>😵‍💫</span>
+        <span class="logo-sub">URBANA PLAY 104.3 FM · VUELTA Y MEDIA</span>
+      </div>
+    </div>
+    <nav class="menu" id="menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#que-es">¿Qué es esto?</a>
+      <a href="#trucos">Nuestros Trucos</a>
+      <a href="#sobrevivientes">Sobrevivientes</a>
+      <a href="#contacto">Salí del Banco</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow">🟨 emisión especial · zona futbolú</span>
+      <h1>¿Te dicen <em>"andá p'allá, bobo"</em> cada vez que opinás de fútbol?</h1>
+      <p class="sub">Sumate a FUTBOLÚ. Aprendé a sobrevivir a los 90 minutos de sufrimiento, asados con amigos intensos y el griterío del domingo sin que nadie note que para vos la redonda es de queso.</p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="#contacto" class="btn btn-cta">⚽ ¡Quiero mi Kit "La Pelota No Se Mancha" Gratis!</a>
+        <a href="#que-es" class="btn btn-outline">Ver de qué se trata</a>
+      </div>
+    </div>
+
+    <div class="var-frame quiz-card">
+      <span class="var-tag">EN REVISIÓN</span>
+      <div class="scan-line"></div>
+      <h3>¿Sos Futbolero o Futbolú?</h3>
+      <p>Elegí la frase que más dijiste este fin de semana.</p>
+      <div class="quiz-options" id="quizOptions">
+        <button class="quiz-btn" data-r="100% FUTBOLERO. Cerrá el pico y segui gritando.">"Hay que jugar a dos toques"</button>
+        <button class="quiz-btn" data-r="FUTBOLÚ CONFIRMADO. Bienvenido/a al club.">"¿Cuánto falta para que termine?"</button>
+        <button class="quiz-btn" data-r="FUTBOLÚ EN ENTRENAMIENTO. Vas por buen camino.">"¿Ese de amarillo es de los buenos?"</button>
+      </div>
+      <p class="quiz-result mono" id="quizResult"></p>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="que-es">
+  <div class="wrap about-grid">
+    <div>
+      <span class="eyebrow" style="background:rgba(255,255,255,0.1); color:var(--amarillo);">quiénes somos</span>
+      <h2 style="margin-top:16px;">Bienvenidos a Vuelta y Media</h2>
+      <p>Un debate que divide hogares y grupos de amigos. De un lado los que saben de fútbol, lo viven y lo sufren con pasión todos los días; y del otro, los que ellos llaman los futbolú. Aparecen cada 4 años y no se privan de decir futboludeces.</p>
+      <p>Queremos hablar con ignorantes del fútbol, o si convivís con un futbolú, contarnos qué te dicen. ¡Reíte con nosotros del mundial!</p>
+      <p class="hosts">CONDUCEN: SEBASTIÁN WAINRAICH · JULIETA PINK · PABLO FÁBREGAS</p>
+    </div>
+    <div>
+      <ul class="questions-list">
+        <li>¿Cuánto falta?</li>
+        <li>¿A dónde hay que meter? ¿De qué lado hay que meter?</li>
+        <li>¿Por qué cambiaron de lado ahora?</li>
+        <li>¿Por qué se la saca con la mano?</li>
+        <li>¿Y esto es entretiempo o lo de la hidratación?</li>
+        <li>¿Por qué tiene guantes ese?</li>
+        <li>¿Y cuándo hay gol?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="trucos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">kit de supervivencia</span>
+      <h2>Nuestros Trucos de Camuflaje</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="var-frame card">
+        <div class="card-icon">🗣️</div>
+        <h3>Traductor de "Fútbol a la Criolla"</h3>
+        <p>Te explicamos qué carajo es un "falso nueve", un "puntero" o por qué todos odian al línea, usando ejemplos de la vida real.</p>
+        <button class="btn-mini">Desbloquear mi superpoder de disimular</button>
+      </div>
+      <div class="var-frame card">
+        <div class="card-icon">📋</div>
+        <h3>El Generador de Frases Hechas</h3>
+        <p>Un arsenal de comentarios infalibles como "Hay que jugar a dos toques", "El técnico planteó mal el partido" o "Falta peso en el área" para tirar mientras tomás un mate y quedar como un sabio.</p>
+        <button class="btn-mini">Pasame el machete para el próximo partido</button>
+      </div>
+      <div class="var-frame card">
+        <div class="card-icon">🎭</div>
+        <h3>Entrenamiento de Actuación Extrema</h3>
+        <p>Aprendé a gritar un gol con delay (tres segundos después de que gritó el vecino) sin perder el ritmo ni la dignidad.</p>
+        <button class="btn-mini">Quiero el diccionario "Fútbol para dummies"</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="sobrevivientes">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">casos reales del programa</span>
+      <h2>Sobrevivientes Futbolú</h2>
+    </div>
+    <div class="test-grid">
+      <div class="var-frame test-card">
+        <span class="test-status">CASO CONFIRMADO POR EL VAR</span>
+        <p class="test-quote">"Hola, ¿qué tal? Les cuento que como no sabía bien, hace unos años en la tele decía ST y yo no entendía qué era. Entré de la calle con un calor bárbaro y estaban mi hijo y mi mamá mirando fútbol reconcentrados. Yo entro y digo: '¿Cómo puede ser que la sensación térmica vaya subiendo a cada rato?'. Me miran y me dicen: '¿De qué sensación térmica hablás? Donde dice ST eso es Segundo Tiempo'. A partir de ahí me cargan cada vez que digo algo."</p>
+        <div class="test-foot"><b>Micaela</b><span>100% Sensación Térmica</span></div>
+      </div>
+      <div class="var-frame test-card">
+        <span class="test-status">CASO CONFIRMADO POR EL VAR</span>
+        <p class="test-quote">"Yo era chico, jugaba Boca-Palmeiras por la Libertadores, creo que era la final. Iba Boca cero, Palmeiras cero y pasa mi mamá, mira el marcador de la tele y dice: '¿Qué es Boco Palo?'. Nos reímos con mi papá. Terrible. Pobre mamá Futbolú."</p>
+        <div class="test-foot"><b>Matías</b><span>Fan de Boco Palo</span></div>
+      </div>
+      <div class="var-frame test-card">
+        <span class="test-status">CASO CONFIRMADO POR EL VAR</span>
+        <p class="test-quote">"Mi mamá en un tiro libre, cuando vio a todos los jugadores amontonados en la barrera tapándose las manos, preguntó súper inocente por qué iban a cantar de nuevo el himno nacional."</p>
+        <div class="test-foot"><b>Estela</b><span>Amante de los Símbolos Patrios</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="var-frame form-panel">
+      <span class="var-tag">ÚLTIMA LLAMADA</span>
+      <div class="scan-line"></div>
+      <h2>No te quedes afuera de la convocatoria</h2>
+      <p>Dejanos tus datos y empezá a caretearla hoy mismo.</p>
+      <form onsubmit="return false;">
+        <div class="field">
+          <label for="nombre">NOMBRE</label>
+          <input type="text" id="nombre" placeholder="[ Tu nombre o alias de camuflaje ]">
+        </div>
+        <div class="field">
+          <label for="email">CORREO ELECTRÓNICO</label>
+          <input type="email" id="email" placeholder="[ tu-mail@ejemplo.com ]">
+        </div>
+        <div class="field">
+          <label for="nivel">TU NIVEL DE "BOBO/A" EN EL FÚTBOL</label>
+          <select id="nivel">
+            <option>Solo vengo por el fernet y las papitas.</option>
+            <option>¿La bocha tiene que entrar en el arco de tu equipo o en el otro?</option>
+            <option>Auxilio, mi grupo de WhatsApp solo habla de la Scaloneta.</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-cta">🧣 ¡Pasame el Trapo para Camuflarme!</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <p>© 2026 FUTBOLÚ. "La pelota no se mancha... pero nosotros ni la tocamos". Todos los derechos reservados.</p>
+    <div class="socials">
+      <a href="#" onclick="return false;">IG · @Futbolu.Ok</a>
+      <a href="#" onclick="return false;">TikTok · @AndaPallaBobo_Fútbol</a>
+      <a href="#" onclick="return false;">X · @NoEntiendoElVar</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+  burger.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  const quizBtns = document.querySelectorAll('.quiz-btn');
+  const quizResult = document.getElementById('quizResult');
+  quizBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      quizBtns.forEach(b => b.classList.remove('picked'));
+      btn.classList.add('picked');
+      quizResult.textContent = '» ' + btn.dataset.r;
+    });
+  });
+</script>
+
+</body>
+</html>

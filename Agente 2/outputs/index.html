@@ -1,0 +1,1124 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FUTBOLÚ | Urbana Play 104.3 FM</title>
+  <meta name="description" content="Landing humorística de FUTBOLÚ para sobrevivir al fútbol argentino sin que nadie note que no entendés nada.">
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --paper: #ffffff;
+      --ink: #132238;
+      --muted: #5e6b7a;
+      --blue: #0053a0;
+      --blue-dark: #003c73;
+      --sky: #e8f3ff;
+      --yellow: #ffc93c;
+      --orange: #ff7a1a;
+      --line: #dbe5ee;
+      --shadow: 0 18px 45px rgba(19, 34, 56, 0.12);
+      --soft-shadow: 0 12px 28px rgba(19, 34, 56, 0.09);
+      --radius: 8px;
+      font-family: Poppins, Montserrat, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(0, 83, 160, 0.035) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(0, 83, 160, 0.035) 1px, transparent 1px),
+        var(--bg);
+      background-size: 36px 36px;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .page {
+      overflow: hidden;
+    }
+
+    .shell {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(248, 249, 250, 0.92);
+      border-bottom: 1px solid rgba(219, 229, 238, 0.9);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 210px;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      color: var(--paper);
+      background: var(--blue);
+      border: 3px solid var(--paper);
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px var(--blue), var(--soft-shadow);
+      font-weight: 900;
+    }
+
+    .brand-title {
+      margin: 0;
+      font-size: 1.3rem;
+      line-height: 1;
+      letter-spacing: 0;
+      font-weight: 900;
+    }
+
+    .brand-title span {
+      display: inline-block;
+      transform: rotate(-7deg);
+    }
+
+    .brand-kicker {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      color: var(--blue);
+      cursor: pointer;
+    }
+
+    .nav-toggle span,
+    .nav-toggle::before,
+    .nav-toggle::after {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin: 5px auto;
+      background: currentColor;
+      border-radius: 99px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .nav-toggle.is-open span {
+      opacity: 0;
+    }
+
+    .nav-toggle.is-open::before {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.is-open::after {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #21344c;
+      font-size: 0.94rem;
+      font-weight: 800;
+    }
+
+    .site-nav a {
+      padding: 10px 12px;
+      border-radius: var(--radius);
+      transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--blue);
+      background: var(--sky);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - 76px);
+      display: grid;
+      align-items: center;
+      padding: 54px 0 42px;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 16% 22%, rgba(255, 201, 60, 0.24), transparent 24%),
+        radial-gradient(circle at 82% 12%, rgba(0, 83, 160, 0.13), transparent 26%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.84), rgba(232, 243, 255, 0.66));
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(310px, 0.72fr);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .tagline {
+      width: fit-content;
+      margin: 0 0 18px;
+      padding: 8px 12px;
+      color: var(--blue-dark);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--yellow);
+      border-radius: var(--radius);
+      box-shadow: var(--soft-shadow);
+      font-size: 0.82rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.06;
+      letter-spacing: 0;
+      font-weight: 900;
+    }
+
+    h1 {
+      max-width: 840px;
+      font-size: clamp(2.25rem, 4.8vw, 3.85rem);
+    }
+
+    .lead {
+      max-width: 720px;
+      margin: 22px 0 0;
+      color: #30435a;
+      font-size: clamp(1.05rem, 2.2vw, 1.28rem);
+    }
+
+    .poll {
+      width: min(100%, 560px);
+      margin: 28px 0 0;
+      padding: 14px;
+      display: grid;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--soft-shadow);
+    }
+
+    .poll p {
+      margin: 0;
+      color: var(--blue-dark);
+      font-weight: 900;
+    }
+
+    .poll-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .choice {
+      min-height: 48px;
+      padding: 10px 12px;
+      border: 2px solid var(--blue);
+      border-radius: var(--radius);
+      color: var(--blue);
+      background: var(--paper);
+      cursor: pointer;
+      font-weight: 900;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .choice:hover,
+    .choice.is-selected {
+      color: var(--paper);
+      background: var(--blue);
+      box-shadow: 0 12px 24px rgba(0, 83, 160, 0.22);
+      transform: translateY(-2px);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin: 28px 0 0;
+    }
+
+    .button {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border: 0;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-weight: 950;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+
+    .button-primary {
+      color: var(--paper);
+      background: var(--blue);
+      box-shadow: 0 16px 30px rgba(0, 83, 160, 0.28);
+    }
+
+    .button-primary:hover {
+      background: var(--blue-dark);
+      box-shadow: 0 20px 36px rgba(0, 83, 160, 0.33);
+      transform: translateY(-3px);
+    }
+
+    .button-warm {
+      color: #1b2330;
+      background: linear-gradient(135deg, var(--yellow), var(--orange));
+      box-shadow: 0 16px 30px rgba(255, 122, 26, 0.25);
+    }
+
+    .button-warm:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 36px rgba(255, 122, 26, 0.32);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 430px;
+      display: grid;
+      place-items: center;
+    }
+
+    .var-board {
+      width: min(100%, 410px);
+      aspect-ratio: 1 / 1.08;
+      padding: 20px;
+      background: #071c34;
+      border: 8px solid var(--paper);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transform: rotate(2deg);
+    }
+
+    .screen {
+      height: 100%;
+      padding: 22px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 16px;
+      color: var(--paper);
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.08) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 2px, transparent 2px),
+        var(--blue);
+      background-size: 28px 28px;
+      border: 3px solid rgba(255, 255, 255, 0.72);
+      border-radius: var(--radius);
+    }
+
+    .screen-top,
+    .screen-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .live-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ff3b30;
+      box-shadow: 0 0 0 6px rgba(255, 59, 48, 0.22);
+      animation: pulse 1.5s infinite;
+    }
+
+    .field {
+      position: relative;
+      overflow: hidden;
+      min-height: 250px;
+      border: 3px solid rgba(255, 255, 255, 0.8);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(90deg, transparent calc(50% - 2px), rgba(255, 255, 255, 0.78) calc(50% - 2px), rgba(255, 255, 255, 0.78) calc(50% + 2px), transparent calc(50% + 2px)),
+        repeating-linear-gradient(90deg, #279048 0 58px, #20833f 58px 116px);
+    }
+
+    .field::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 95px;
+      height: 95px;
+      border: 4px solid rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .ball {
+      position: absolute;
+      left: 22%;
+      top: 52%;
+      width: 54px;
+      height: 54px;
+      border: 4px solid #0f1723;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 50%, #0f1723 0 8px, transparent 9px),
+        radial-gradient(circle at 28% 28%, #0f1723 0 5px, transparent 6px),
+        radial-gradient(circle at 70% 31%, #0f1723 0 5px, transparent 6px),
+        radial-gradient(circle at 30% 72%, #0f1723 0 5px, transparent 6px),
+        radial-gradient(circle at 72% 72%, #0f1723 0 5px, transparent 6px),
+        #fff;
+      animation: wobble 3.6s ease-in-out infinite;
+    }
+
+    .player {
+      position: absolute;
+      right: 18%;
+      top: 38%;
+      width: 62px;
+      height: 92px;
+    }
+
+    .player::before {
+      content: "¿?";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      color: var(--ink);
+      background: var(--yellow);
+      border: 3px solid var(--paper);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      font-weight: 950;
+    }
+
+    .player::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 58px;
+      height: 54px;
+      background: linear-gradient(90deg, var(--paper) 0 45%, var(--blue) 45% 55%, var(--paper) 55%);
+      border: 3px solid var(--paper);
+      border-radius: var(--radius) var(--radius) 22px 22px;
+      transform: translateX(-50%);
+    }
+
+    .sticker {
+      position: absolute;
+      right: 0;
+      bottom: 28px;
+      max-width: 220px;
+      padding: 14px 16px;
+      color: #162032;
+      background: var(--yellow);
+      border: 3px solid var(--paper);
+      border-radius: var(--radius);
+      box-shadow: var(--soft-shadow);
+      font-weight: 950;
+      transform: rotate(-6deg);
+    }
+
+    section {
+      padding: 82px 0;
+    }
+
+    .section-head {
+      max-width: 860px;
+      margin-bottom: 30px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--blue);
+      font-size: 0.85rem;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4.6vw, 3.4rem);
+    }
+
+    .section-copy {
+      margin: 18px 0 0;
+      color: #31445d;
+      font-size: 1.07rem;
+    }
+
+    .about {
+      background: var(--paper);
+      border-block: 1px solid var(--line);
+    }
+
+    .question-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .question {
+      padding: 10px 13px;
+      color: var(--blue-dark);
+      background: var(--sky);
+      border: 1px solid #cfe4f8;
+      border-radius: 999px;
+      box-shadow: 0 8px 18px rgba(0, 83, 160, 0.08);
+      font-weight: 800;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .question:hover {
+      background: #fff7dc;
+      transform: translateY(-3px) rotate(-1deg);
+    }
+
+    .feature-grid,
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature-card,
+    .testimonial-card,
+    .form-panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--soft-shadow);
+    }
+
+    .feature-card {
+      min-height: 100%;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(0, 83, 160, 0.35);
+      box-shadow: var(--shadow);
+      transform: translateY(-6px);
+    }
+
+    .card-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      background: var(--sky);
+      border-radius: var(--radius);
+      font-size: 1.8rem;
+      font-weight: 950;
+    }
+
+    .feature-card h3 {
+      font-size: 1.3rem;
+    }
+
+    .feature-card p,
+    .testimonial-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .feature-card .button {
+      width: 100%;
+      margin-top: auto;
+      color: #1a2533;
+      background: #fff2bc;
+      border: 1px solid #ffe28a;
+    }
+
+    .feature-card .button:hover {
+      background: var(--yellow);
+      transform: translateY(-2px);
+    }
+
+    .testimonials {
+      background:
+        linear-gradient(135deg, rgba(0, 83, 160, 0.94), rgba(0, 60, 115, 0.96)),
+        var(--blue);
+      color: var(--paper);
+    }
+
+    .testimonials .eyebrow,
+    .testimonials .section-copy {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .testimonial-card {
+      padding: 22px;
+      color: var(--ink);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 22px 42px rgba(0, 0, 0, 0.2);
+    }
+
+    .quote-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 14px;
+      color: var(--ink);
+      background: var(--yellow);
+      border-radius: 50%;
+      font-size: 1.5rem;
+      font-weight: 950;
+    }
+
+    .testimonial-card cite {
+      display: block;
+      margin-top: 16px;
+      color: var(--blue-dark);
+      font-style: normal;
+      font-weight: 950;
+    }
+
+    .signup {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(248, 249, 250, 0.96)),
+        var(--bg);
+    }
+
+    .signup-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(320px, 0.72fr);
+      gap: 38px;
+      align-items: start;
+    }
+
+    .callout {
+      padding: 24px;
+      color: var(--paper);
+      background: var(--blue);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .callout strong {
+      display: block;
+      font-size: clamp(1.45rem, 3vw, 2.2rem);
+      line-height: 1.08;
+    }
+
+    .callout p {
+      margin: 16px 0 0;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .form-panel {
+      padding: 22px;
+    }
+
+    .field-group {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .field-group label {
+      color: #25384e;
+      font-weight: 900;
+    }
+
+    .field-group input,
+    .field-group select {
+      width: 100%;
+      min-height: 52px;
+      padding: 12px 14px;
+      color: var(--ink);
+      background: #fbfdff;
+      border: 1px solid #cddce8;
+      border-radius: var(--radius);
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .field-group input:focus,
+    .field-group select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(0, 83, 160, 0.13);
+    }
+
+    .form-panel .button {
+      width: 100%;
+    }
+
+    .site-footer {
+      padding: 28px 0;
+      color: var(--paper);
+      background: #101a28;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .copyright {
+      max-width: 600px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.92rem;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .socials a {
+      padding: 8px 10px;
+      color: var(--paper);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 800;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .socials a:hover {
+      background: rgba(255, 255, 255, 0.16);
+      transform: translateY(-2px);
+    }
+
+    @keyframes pulse {
+      50% {
+        transform: scale(0.76);
+        opacity: 0.72;
+      }
+    }
+
+    @keyframes wobble {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      45% {
+        transform: translate(84px, -28px) rotate(130deg);
+      }
+      70% {
+        transform: translate(118px, 34px) rotate(220deg);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      .site-nav {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        top: calc(100% + 8px);
+        display: grid;
+        gap: 4px;
+        padding: 10px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .site-nav.is-open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .hero-grid,
+      .signup-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-visual {
+        min-height: 390px;
+      }
+
+      .feature-grid,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .socials {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .shell {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .header-inner {
+        min-height: 68px;
+      }
+
+      .brand-mark {
+        width: 40px;
+        height: 40px;
+      }
+
+      .brand-title {
+        font-size: 1.08rem;
+      }
+
+      .brand-kicker {
+        font-size: 0.68rem;
+      }
+
+      .hero {
+        padding-top: 36px;
+      }
+
+      h1 {
+        font-size: clamp(2.1rem, 12vw, 3.2rem);
+      }
+
+      .poll-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-visual {
+        min-height: 340px;
+      }
+
+      .var-board {
+        padding: 14px;
+        border-width: 6px;
+      }
+
+      .screen {
+        padding: 15px;
+      }
+
+      .field {
+        min-height: 210px;
+      }
+
+      .sticker {
+        right: 12px;
+        bottom: 10px;
+        max-width: 180px;
+        font-size: 0.9rem;
+      }
+
+      section {
+        padding: 62px 0;
+      }
+
+      .question {
+        border-radius: var(--radius);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="#inicio" aria-label="FUTBOLÚ inicio">
+          <span class="brand-mark">¿?</span>
+          <span>
+            <strong class="brand-title">FUTBOLÚ <span>😵‍💫</span></strong>
+            <small class="brand-kicker">Urbana Play 104.3 FM - Vuelta y Media</small>
+          </span>
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+        <nav class="site-nav" aria-label="Navegación principal">
+          <a href="#inicio">Inicio</a>
+          <a href="#que-es">¿Qué es esto?</a>
+          <a href="#trucos">Nuestros Trucos</a>
+          <a href="#sobrevivientes">Sobrevivientes</a>
+          <a href="#salir">Salí del Banco</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="shell hero-grid">
+          <div>
+            <p class="tagline">Pantalla de VAR emocional para gente perdida</p>
+            <h1>¿Te dicen "andá p'allá, bobo" cada vez que opinás de fútbol? Sumate a FUTBOLÚ.</h1>
+            <p class="lead">Aprendé a sobrevivir a los 90 minutos de sufrimiento, asados con amigos intensos y el griterío del domingo sin que nadie note que para vos la redonda es de queso.</p>
+
+            <div class="poll" aria-label="Encuesta rápida">
+              <p>¿Sos Futbolero o Futbolú?</p>
+              <div class="poll-actions">
+                <button class="choice" type="button">Futbolero</button>
+                <button class="choice" type="button">Futbolú</button>
+              </div>
+            </div>
+
+            <div class="cta-row">
+              <a class="button button-primary" href="#salir">¡Quiero mi Kit "La Pelota No Se Mancha" Gratis!</a>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="var-board">
+              <div class="screen">
+                <div class="screen-top"><span>VAR</span><span class="live-dot"></span><span>Chequeo</span></div>
+                <div class="field">
+                  <span class="ball"></span>
+                  <span class="player"></span>
+                </div>
+                <div class="screen-bottom"><span>ST no es clima</span><span>FUTBOLÚ</span></div>
+              </div>
+            </div>
+            <div class="sticker">Manual de camuflaje aprobado por el asado.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about" id="que-es">
+        <div class="shell">
+          <div class="section-head">
+            <p class="eyebrow">¿Qué es esto?</p>
+            <h2>Bienvenidos a Vuelta y Media (Sebastián Wainraich, Julieta Pink y Pablo Fábregas).</h2>
+            <p class="section-copy">Un debate que divide hogares y grupos de amigos. De un lado los que saben de fútbol, lo viven y lo sufren con pasión todos los días; y del otro, los que ellos llaman los futbolú. Aparecen cada 4 años y no se privan de decir futboludeces. Queremos hablar con ignorantes del fútbol, o si conviven con un futbolú, qué nos dicen. ¡Reíte con nosotros del mundial!</p>
+          </div>
+
+          <div class="question-cloud" aria-label="Preguntas clásicas">
+            <span class="question">¿Cuánto falta?</span>
+            <span class="question">¿A dónde hay que meter? ¿De qué lado hay que meter?</span>
+            <span class="question">¿Por qué cambiaron de lado ahora?</span>
+            <span class="question">¿Por qué se la saca con la mano?</span>
+            <span class="question">¿Y esto es entretiempo o lo de la hidratación?</span>
+            <span class="question">¿Por qué tiene guantes ese?</span>
+            <span class="question">¿Y cuándo hay gol?</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="trucos">
+        <div class="shell">
+          <div class="section-head">
+            <p class="eyebrow">Nuestros trucos</p>
+            <h2>Servicios de camuflaje para no quedar pagando frente al televisor.</h2>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="card-icon">T</div>
+              <h3>Traductor de "Fútbol a la Criolla".</h3>
+              <p>Te explicamos qué carajo es un "falso nueve", un "puntero" o por qué todos odian al línea, usando ejemplos de la vida real.</p>
+              <a class="button" href="#salir">Desbloquear mi superpoder de disimular</a>
+            </article>
+
+            <article class="feature-card">
+              <div class="card-icon">F</div>
+              <h3>El Generador de Frases Hechas.</h3>
+              <p>Un arsenal de comentarios infalibles como "Hay que jugar a dos toques", "El técnico planteó mal el partido" o "Falta peso en el área" para tirar mientras tomás un mate y quedar como un sabio.</p>
+              <a class="button" href="#salir">Pasame el machete para el próximo partido</a>
+            </article>
+
+            <article class="feature-card">
+              <div class="card-icon">G</div>
+              <h3>Entrenamiento de Actuación Extrema.</h3>
+              <p>Aprendé a gritar un gol con delay (tres segundos después de que gritó el vecino) sin perder el ritmo ni la dignidad.</p>
+              <a class="button" href="#salir">Quiero el diccionario "Fútbol para dummies"</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonials" id="sobrevivientes">
+        <div class="shell">
+          <div class="section-head">
+            <p class="eyebrow">Sobrevivientes</p>
+            <h2>Historias reales de gente que miró el marcador y vio meteorología.</h2>
+            <p class="section-copy">Casos testigo para que sepas que no estás solo, sola ni tácticamente ubicado.</p>
+          </div>
+
+          <div class="testimonial-grid">
+            <article class="testimonial-card">
+              <div class="quote-mark">“</div>
+              <p>Hola, ¿qué tal? Les cuento que como no sabía bien, hace unos años en la tele decía ST y yo no entendía qué era. Entré de la calle con un calor bárbaro y estaban mi hijo y mi mamá mirando fútbol reconcentrados. Yo entro y digo: "¿Cómo puede ser que la sensación térmica vaya subiendo a cada rato?". Me miran y me dicen: "¿De qué sensación térmica hablás? Donde dice ST eso es Segundo Tiempo". A partir de ahí me cargan cada vez que digo algo.</p>
+              <cite>— Micaela, 100% Sensación Térmica.</cite>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="quote-mark">“</div>
+              <p>Yo era chico, jugaba Boca-Palmeiras por la Libertadores, creo que era la final. Iba Boca cero, Palmeiras cero y pasa mi mamá, mira el marcador de la tele y dice: "¿Qué es Boco Palo?". Nos reímos con mi papá. Terrible. Pobre mamá Futbolú.</p>
+              <cite>— Matías, Fan de Boco Palo.</cite>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="quote-mark">“</div>
+              <p>Mi mamá en un tiro libre, cuando vio a todos los jugadores amontonados en la barrera tapándose las manos, preguntó súper inocente por qué iban a cantar de nuevo el himno nacional.</p>
+              <cite>— Estela, Amante de los Símbolos Patrios.</cite>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="signup" id="salir">
+        <div class="shell signup-grid">
+          <div>
+            <p class="eyebrow">Salí del banco</p>
+            <h2>No te quedes afuera de la convocatoria.</h2>
+            <p class="section-copy">Dejanos tus datos y empezá a caretearla hoy mismo.</p>
+            <div class="callout">
+              <strong>Kit mental para mirar partidos sin preguntar si el arquero puede hacer gol.</strong>
+              <p>Incluye frases, silencios estratégicos y la habilidad de asentir cuando alguien dice "faltó cambio de ritmo".</p>
+            </div>
+          </div>
+
+          <form class="form-panel" action="#" method="post">
+            <div class="field-group">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" name="nombre" type="text" placeholder="[ Tu nombre o alias de camuflaje ]" required>
+            </div>
+
+            <div class="field-group">
+              <label for="email">Correo Electrónico</label>
+              <input id="email" name="email" type="email" placeholder="[ tu-mail@ejemplo.com ]" required>
+            </div>
+
+            <div class="field-group">
+              <label for="nivel">Tu nivel de "bobo/a" en el fútbol</label>
+              <select id="nivel" name="nivel" required>
+                <option value="" selected disabled>Elegí tu diagnóstico futbolero</option>
+                <option>Solo vengo por el fernet y las papitas.</option>
+                <option>¿La bocha tiene que entrar en el arco de tu equipo o en el otro?</option>
+                <option>Auxilio, mi grupo de WhatsApp solo habla de la Scaloneta.</option>
+              </select>
+            </div>
+
+            <button class="button button-warm" type="submit">¡Pasame el Trapo para Camuflarme!</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <p class="copyright">© 2026 FUTBOLÚ. "La pelota no se mancha... pero nosotros ni la tocamos". Todos los derechos reservados.</p>
+        <div class="socials" aria-label="Redes sociales">
+          <a href="#" aria-label="Instagram Futbolu Ok">◎ @Futbolu.Ok</a>
+          <a href="#" aria-label="TikTok Anda Palla Bobo Fútbol">♪ @AndaPallaBobo_Fútbol</a>
+          <a href="#" aria-label="X No Entiendo El Var">𝕏 @NoEntiendoElVar</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const toggle = document.querySelector(".nav-toggle");
+    const nav = document.querySelector(".site-nav");
+    const choices = document.querySelectorAll(".choice");
+
+    toggle.addEventListener("click", () => {
+      const isOpen = toggle.classList.toggle("is-open");
+      nav.classList.toggle("is-open", isOpen);
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    nav.addEventListener("click", (event) => {
+      if (event.target.tagName === "A") {
+        toggle.classList.remove("is-open");
+        nav.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    choices.forEach((choice) => {
+      choice.addEventListener("click", () => {
+        choices.forEach((item) => item.classList.remove("is-selected"));
+        choice.classList.add("is-selected");
+      });
+    });
+  </script>
+</body>
+</html>

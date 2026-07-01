@@ -1,0 +1,71 @@
+ROLE & OBJECTIVE:
+Eres un desarrollador Frontend Senior experto en UX/UI y diseño web responsivo. Tu objetivo es generar el código completo, limpio y unificado (HTML estructurado y CSS moderno en la misma página o en archivos separados listos para producción) para una Landing Page humorística basada en la sección "FUTBOLÚ" del programa de radio argentino "Vuelta y Media" (Urbana Play 104.3 FM). La página está dedicada con orgullo a las personas que no entienden nada de fútbol en Argentina.
+
+VISUAL STYLE & DESIGN SYSTEM (CRITICAL):
+- Estética General: Divertida, informal, dinámica, tribunera pero sumamente estética. Debe evocar un ambiente futbolero desde la ironía y el camuflaje.
+- Paleta de Colores: 
+  * Fondo principal: Blanco/Gris muy claro (#F8F9FA) para alta legibilidad.
+  * Colores de acento: Azul Francia (#0053A0) combinado con Blanco (estilo pantalla de VAR / Selección) y detalles en Amarillo vibrante o Naranja para los botones de llamada a la acción (CTA) para que resalten al instante. Evitar colores que remitan exclusivamente a un solo club local (Boca/River).
+- Tipografía: Sans-serif moderna, redondeada, audaz y expresiva para los títulos principales (ej. Montserrat o Poppins), y limpia para los textos de lectura.
+- Elementos Visuales e Interactividad: Usar cajas de contenido con bordes redondeados, sombras sutiles (box-shadow) y efectos hover animados (transiciones suaves de 0.3s) en botones y tarjetas para denotar dinamismo.
+
+LANDING PAGE STRUCTURE & CONTENT REQUIREMENTS:
+
+1. CABECERA (Header):
+- Logotipo a la izquierda: "FUTBOLÚ" (añadir un emoticón de carita mareada o confundida).
+- Subtexto del logo o banner sutil: "Urbana Play 104.3 FM - Vuelta y Media".
+- Menú de navegación a la derecha (estilo Navbar responsivo): Inicio | ¿Qué es esto? | Nuestros Trucos | Sobrevivientes | Salí del Banco.
+
+2. HERO SECTION:
+- Título Impactante (H1): ¿Te dicen "andá p'allá, bobo" cada vez que opinás de fútbol? Sumate a FUTBOLÚ.
+- Subtítulo: Aprendé a sobrevivir a los 90 minutos de sufrimiento, asados con amigos intensos y el griterío del domingo sin que nadie note que para vos la redonda es de queso.
+- Interactividad Frontend opcional: Una pequeña encuesta visual rápida: "¿Sos Futbolero o Futbolú?" con botones interactivos (estados hover).
+- Llamada a la Acción (CTA Principal): Un botón destacado, grande, con fondo azul y letras blancas (estilo tipografía de VAR). Texto del botón: "¡Quiero mi Kit 'La Pelota No Se Mancha' Gratis!".
+
+3. DESCRIPCIÓN / SOBRE NOSOTROS:
+- Título: Bienvenidos a Vuelta y Media (Sebastián Wainraich, Julieta Pink y Pablo Fábregas).
+- Texto de Contexto: "Un debate que divide hogares y grupos de amigos. De un lado los que saben de fútbol, lo viven y lo sufren con pasión todos los días; y del otro, los que ellos llaman los futbolú. Aparecen cada 4 años y no se privan de decir futboludeces. Queremos hablar con ignorantes del fútbol, o si conviven con un futbolú, qué nos dicen. ¡Reíte con nosotros del mundial!"
+- Lista de preguntas clásicas flotantes o integradas de manera estética:
+  * "¿Cuánto falta?"
+  * "¿A dónde hay que meter? ¿De qué lado hay que meter?"
+  * "¿Por qué cambiaron de lado ahora?"
+  * "¿Por qué se la saca con la mano?"
+  * "¿Y esto es entretiempo o lo de la hidratación?"
+  * "¿Por qué tiene guantes ese?"
+  * "¿Y cuándo hay gol?"
+
+4. SECCIÓN DE SERVICIOS O CARACTERÍSTICAS PRINCIPALES:
+Diseñar una cuadrícula (Grid o Flexbox) de tarjetas interactivas con los siguientes servicios de camuflaje:
+- Tarjeta 1: Traductor de "Fútbol a la Criolla". Texto: "Te explicamos qué carajo es un 'falso nueve', un 'puntero' o por qué todos odian al línea, usando ejemplos de la vida real."
+- Tarjeta 2: El Generador de Frases Hechas. Texto: "Un arsenal de comentarios infalibles como 'Hay que jugar a dos toques', 'El técnico planteó mal el partido' o 'Falta peso en el área' para tirar mientras tomás un mate y quedar como un sabio."
+- Tarjeta 3: Entrenamiento de Actuación Extrema. Texto: "Aprendé a gritar un gol con delay (tres segundos después de que gritó el vecino) sin perder el ritmo ni la dignidad."
+- Botones secundarios integrados de acción rápida en las tarjetas: "Desbloquear mi superpoder de disimular", "Pasame el machete para el próximo partido", "Quiero el diccionario 'Fútbol para dummies'".
+
+5. TESTIMONIOS O RESEÑAS DE CLIENTES:
+Diseñar una sección estética de testimonios/citas de usuarios sobrevivientes. Incluir de manera destacada las siguientes tres historias reales del programa:
+- Testimonio 1 (Caso ST): "Hola, ¿qué tal? Les cuento que como no sabía bien, hace unos años en la tele decía ST y yo no entendía qué era. Entré de la calle con un calor bárbaro y estaban mi hijo y mi mamá mirando fútbol reconcentrados. Yo entro y digo: '¿Cómo puede ser que la sensación térmica vaya subiendo a cada rato?'. Me miran y me dicen: '¿De qué sensación térmica hablás? Donde dice ST eso es Segundo Tiempo'. A partir de ahí me cargan cada vez que digo algo." — Micaela, 100% Sensación Térmica.
+- Testimonio 2 (Caso Boco Palo): "Yo era chico, jugaba Boca-Palmeiras por la Libertadores, creo que era la final. Iba Boca cero, Palmeiras cero y pasa mi mamá, mira el marcador de la tele y dice: '¿Qué es Boco Palo?'. Nos reímos con mi papá. Terrible. Pobre mamá Futbolú." — Matías, Fan de Boco Palo.
+- Testimonio 3 (Caso Himno): "Mi mamá en un tiro libre, cuando vio a todos los jugadores amontonados en la barrera tapándose las manos, preguntó súper inocente por qué iban a cantar de nuevo el himno nacional." — Estela, Amante de los Símbolos Patrios.
+
+6. FORMULARIO DE CONTACTO (Maquetado Visual sin Backend):
+- Título: No te quedes afuera de la convocatoria. Dejanos tus datos y empezá a caretearla hoy mismo.
+- Campos requeridos con diseño limpio:
+  1. Nombre (Placeholder: "[ Tu nombre o alias de camuflaje ]")
+  2. Correo Electrónico (Placeholder: "[ tu-mail@ejemplo.com ]")
+  3. Tu nivel de "bobo/a" en el fútbol (Selector Desplegable / Dropdown con opciones):
+     * Solo vengo por el fernet y las papitas.
+     * ¿La bocha tiene que entrar en el arco de tu equipo o en el otro?
+     * Auxilio, mi grupo de WhatsApp solo habla de la Scaloneta.
+- Botón de Envío (CTA Formulario): Un botón ancho y llamativo que diga: "¡Pasame el Trapo para Camuflarme!".
+
+7. PIE DE PÁGINA (Footer):
+- Texto de Copyright a la izquierda: © 2026 FUTBOLÚ. "La pelota no se mancha... pero nosotros ni la tocamos". Todos los derechos reservados.
+- Enlaces a redes sociales a la derecha usando nombres de usuario icónicos con iconos simulados:
+  * Instagram: @Futbolu.Ok
+  * TikTok: @AndaPallaBobo_Fútbol
+  * X / Twitter: @NoEntiendoElVar
+
+RESTRICCIONES DE DESARROLLO (STRICT):
+- No dejes marcadores de posición vacíos ("Lorem Ipsum"). Utiliza únicamente los textos provistos arriba.
+- El diseño debe verse impecable tanto en computadoras de escritorio como en teléfonos móviles (Mobile First / Responsive).
+- Genera todo el código de forma completamente autónoma en un formato limpio, modular y fácil de leer para que pueda ser desplegado directamente.

@@ -19,7 +19,7 @@ La interfaz integradora que conecta a todos los agentes evaluados se encuentra d
 ## 📝 El prompt exacto utilizado
 Este es el prompt exacto ejecutado en todos los agentes, sin alteraciones, respetando la restricción de no modificar el código generado manualmente; únicamente se agregó el botón con el enlace para volver al inicio.
 
-> Nota: insertar aquí el contenido del archivo Mensaje.txt / Prompt.txt.
+![Prompt](Prompt.txt)
 
 ## 🤖 Capturas de pantalla y enlaces de agentes
 

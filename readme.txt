@@ -21,16 +21,30 @@ Este es el prompt exacto ejecutado en todos los agentes, sin alteraciones, respe
 > *(Nota: Inserta aquí el contenido del archivo Mensaje.txt / Prompt.txt)*
 
 ## 🤖 Capturas de pantalla y Enlaces de Agentes
+### Pantalla de Inicio
+![Captura Inicio](Img/inicio.png) 
+
+### Pantalla de Prompt
+
+![Captura Prompt](Img/prompt.png) 
 
 ### Agente 1: Claude modelo Sonnet 5
 * **Link al Agente 1:** [Ver despliegue](https://gonzalezbeatrizpfo2.vercel.app/Agente%201/futbolu-landing.html)
 * **Capturas de pantalla:**
-![Captura Agente 1](Img/ruta-a-tu-imagen-agente1.png) *(Reemplazar con la ruta correcta)*
+![Captura Agente 1](Img/agente1_1.png) 
+![Captura Agente 1](Img/agente1_2.png) 
+![Captura Agente 1](Img/agente1_3.png) 
+![Captura Agente 1](Img/agente1_4.png) 
+![Captura Agente 1](Img/agente1_5.png) 
 
 ### Agente 2: Codex modelo GPT-5.5
 * **Link al Agente 2:** [Ver despliegue](https://gonzalezbeatrizpfo2.vercel.app/Agente%202/outputs/index.html)
 * **Capturas de pantalla:**
-![Captura Agente 2](Img/ruta-a-tu-imagen-agente2.png) *(Reemplazar con la ruta correcta)*
+![Captura Agente 2](Img/agente2_1.png) 
+![Captura Agente 2](Img/agente2_2.png) 
+![Captura Agente 2](Img/agente2_3.png) 
+![Captura Agente 2](Img/agente2_4.png) 
+![Captura Agente 2](Img/agente2_5.png) 
 
 ## 💡 Conclusión
 Esta práctica me permitió explorar las implicancias del alcance de la redacción de Prompts y visualizar la resolución de los diferentes agentes de IA a partir de una misma especificación funcional.

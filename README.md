@@ -7,6 +7,13 @@
 - **Carrera:** Tecnicatura Superior en Desarrollo de Software
 - **Año:** 2026 1C
 
+## 💡 Inspiración
+Este trabajo fue inspirado en el programa de radio Urbana Play 104.3 FM Vuelta y Media y la sección “Futbolú”.
+Me resultó interesante y divertido en esta época de Mundial de Fútbol, hablar de las personas que entienden poco o nada sobre este deporte y que despierta un fanatismo sin igual en el resto.
+Utilicé Gemini para que me diera ideas de cómo armar el diseño de la página, estilo visual, títulos llamativos, y así fui puliendo lo que sería el prompt definitivo.
+![Captura vuelta](Img/vueltaymedia.png)
+
+
 ## 📁 Repositorio GitHub
 Puedes acceder al código fuente de este proyecto en el siguiente enlace:
 [https://github.com/EBetGonzalez/PFO2-FRONTEND-GonzalezBeatriz](https://github.com/EBetGonzalez/PFO2-FRONTEND-GonzalezBeatriz)
